@@ -4,6 +4,8 @@ class CreateItems < ActiveRecord::Migration
       t.references :list
       t.string :content
       t.boolean :complete, default: false
+
+      t.timestamps
     end
   end
 end

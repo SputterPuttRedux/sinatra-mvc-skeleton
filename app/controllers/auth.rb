@@ -22,8 +22,18 @@ get '/signup' do
 end
 
 post '/signup' do
+  user = User.new(params[:user])
+
+  if user.save
+    session[:user_id] = user.user_id
+    redirect '/'
+  else
+    redirect '/signup'
+  end
 end
 
 get '/signout' do
+  session[:user_id] = nil
+  redirect '/'
 end
 

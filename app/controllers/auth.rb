@@ -2,16 +2,20 @@ get '/' do
   erb :welcome
 end
 
+get '/dashboard' do
+  erb :dashboard
+end
+
 get '/login' do
   erb :'auth/login'
 end
 
 post '/login' do
-  user = User.find_by(name: params[:user][:name])
+  user = User.find_by(email: params[:user][:email])
 
   if user.try(:authenticate, params[:user][:password])
-    session[:user_id] = user.user_id
-    redirect '/'
+    session[:user_id] = user.id
+    redirect '/dashboard'
   else
     redirect '/login'
   end

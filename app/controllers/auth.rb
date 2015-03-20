@@ -3,14 +3,14 @@ get '/' do
 end
 
 get '/login' do
-  erb :login
+  erb :'auth/login'
 end
 
 post '/login' do
 end
 
 get '/signup' do
-  erb :signup
+  erb :'auth/signup'
 end
 
 post '/signup' do

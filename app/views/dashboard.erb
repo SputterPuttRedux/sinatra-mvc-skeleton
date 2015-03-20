@@ -1,0 +1,8 @@
+
+<% if current_user %>
+<ul>
+  <% current_user.lists.each do |list|%>
+  <li><%= list.title %></li>
+  <% end %>
+</ul>
+<% end %>

@@ -2,7 +2,7 @@
   User.create(
     email: Faker::Internet.email,
     password: "password",
-    password_digest: "password"
+    password_confirmation: "password"
     )
 end
 

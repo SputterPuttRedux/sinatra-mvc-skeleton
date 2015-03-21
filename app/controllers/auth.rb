@@ -2,10 +2,6 @@ get '/' do
   erb :welcome
 end
 
-get '/dashboard' do
-  erb :dashboard
-end
-
 get '/login' do
   erb :'auth/login'
 end

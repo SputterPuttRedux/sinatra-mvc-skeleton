@@ -421,3 +421,17 @@ td,
 th {
   padding: 0;
 }
+
+/* Header Styling*/
+
+header ul {
+  list-style-type: none;
+}
+
+header li {
+  display: inline;
+}
+
+#user-dashboard li {
+  list-style-type: none;
+}

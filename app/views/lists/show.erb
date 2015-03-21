@@ -1,0 +1,22 @@
+<div id="individual-list">
+  <h3><%= @list.title %></h3>
+<table>
+  <% @list.items.each do |item| %>
+    <tr>
+      <td><%= item.content  %></td>
+      <td><%= item.complete  %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+
+<div id="list-options">
+  <h3>options for this list</h3>
+  <table>
+    <tr>
+      <td><a href="/lists/<%= @list.id %>/edit">Edit</a></td>
+      <td>Delete</td>
+      <td><a href="/lists/new">Make New List</a></td>
+    </tr>
+  </table>
+</div>

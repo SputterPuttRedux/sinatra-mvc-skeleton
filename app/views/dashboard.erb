@@ -1,8 +1,21 @@
-
-<% if current_user %>
-<ul>
-  <% current_user.lists.each do |list|%>
-  <li><%= list.title %></li>
+<div id="user-dashboard">
+  <h2><%= current_user.email %>'s Lists:</h2>
+    <div>
+      <a href="/lists/new"><h3>Create new list</h3></a>
+    </div>
+  <% if current_user %>
+  <table>
+  <% @lists.each do |list|%>
+    <tr>
+      <td>
+        <p><a href="/lists/<%= list.id %>"><%= list.title %></a></p>
+        <p>created at: <%= list.created_at %></p>
+      </td>
+      <td><a href="/lists/<%= list.id %>/edit">update</a></td>
+      <td>delete</td>
+    </tr>
+    <% end %>
+  </table>
   <% end %>
-</ul>
-<% end %>
+</div>
+

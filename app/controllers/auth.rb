@@ -11,7 +11,7 @@ post '/login' do
 
   if user.try(:authenticate, params[:user][:password])
     session[:user_id] = user.id
-    redirect '/lists/all'
+    redirect '/'
   else
     redirect '/login'
   end

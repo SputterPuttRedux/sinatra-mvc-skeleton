@@ -3,6 +3,7 @@ class CreateNotes < ActiveRecord::Migration
     create_table :notes do |t|
       t.references :user
       t.text :content
+      t.boolean :complete, default: false
 
       t.timestamps
     end

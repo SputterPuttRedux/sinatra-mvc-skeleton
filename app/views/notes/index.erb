@@ -1,0 +1,16 @@
+<div id="all notes">
+
+  <table>
+    <tr>
+      <td>Note</td>
+      <td>Status</td>
+    </tr>
+    <% @notes.each do |note| %>
+    <tr>
+      <td><a href="/notes/<%= note.id %>"><%= note.content %></a> | <a href="/notes/<%= note.id %>/edit">[edit]</a> | <a href="">[delete]</a></td>
+      <td><%= note.complete %></td>
+    </tr>
+   <% end %>
+  </table>
+
+</div>

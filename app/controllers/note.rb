@@ -1,5 +1,7 @@
+
 get '/notes/all' do
-  @notes = current_user.notes
+  @user = User.find(session[:user_id])
+  @notes = @user.notes
   erb :'notes/index'
 end
 
@@ -14,4 +16,25 @@ post '/notes' do
     redirect '/login'
   end
   redirect '/'
+end
+
+put '/notes/:id' do |id|
+  note = Note.find(id)
+  note.update(content: params[:note][:content])
+  redirect "/notes/#{note.id}"
+end
+
+get '/notes/:id' do |id|
+  @note = Note.find(id)
+  erb :'/notes/show'
+end
+
+get '/notes/:id/edit' do |id|
+  @note = Note.find(id)
+  erb :'/notes/edit'
+end
+
+delete '/notes/:id' do |id|
+  @note = Note.find(id).destroy
+  redirect '/notes/all'
 end

@@ -12,7 +12,7 @@
       <td><a href="/notes/<%= note.id %>"><%= note.content %></a> | <a href="/notes/<%= note.id %>/edit">[edit]</a> | <a href="/notes/<%= note.id %>/delete">[delete]</a></td>
       <td><%= note.complete %></td>
       <td>
-        <form action="/notes/<%= note.id %>" method="POST" >
+        <form action="/notes/<%= note.id %>/complete" method="POST" >
           <input type="hidden" name="_method" value="PUT">
           <!-- <input type="checkbox" name="checked" checked="true">Checked</input> -->
           <input type="checkbox" name="note[complete]" value=true>T or F</input>

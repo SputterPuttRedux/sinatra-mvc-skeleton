@@ -4,11 +4,21 @@
     <tr>
       <td>Note</td>
       <td>Status</td>
+      <td>Update</td>
     </tr>
+    <!-- got toggle checkbox working, but deletes contents of note -->
     <% @notes.each do |note| %>
     <tr>
       <td><a href="/notes/<%= note.id %>"><%= note.content %></a> | <a href="/notes/<%= note.id %>/edit">[edit]</a> | <a href="/notes/<%= note.id %>/delete">[delete]</a></td>
       <td><%= note.complete %></td>
+      <td>
+        <form action="/notes/<%= note.id %>" method="POST" >
+          <input type="hidden" name="_method" value="PUT">
+          <!-- <input type="checkbox" name="checked" checked="true">Checked</input> -->
+          <input type="checkbox" name="note[complete]" value=true>T or F</input>
+          <input type="submit" name="submit" value="Update"/>
+        </form>
+      </td>
     </tr>
    <% end %>
   </table>

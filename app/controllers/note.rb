@@ -18,6 +18,7 @@ post '/notes' do
   redirect '/'
 end
 
+
 put '/notes/:id' do |id|
   note = Note.find(id)
   note.update(content: params[:note][:content])
@@ -29,9 +30,15 @@ get '/notes/:id' do |id|
   erb :'/notes/show'
 end
 
+
 get '/notes/:id/edit' do |id|
   @note = Note.find(id)
   erb :'/notes/edit'
+end
+
+get '/notes/:id/delete' do |id|
+  @note = Note.find(id)
+  erb :'notes/delete'
 end
 
 delete '/notes/:id' do |id|

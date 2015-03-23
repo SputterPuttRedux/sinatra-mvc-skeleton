@@ -1,7 +1,7 @@
 
 get '/notes/all' do
   @user = User.find(session[:user_id])
-  @notes = @user.notes
+  @notes = @user.notes.sort_by{ |note| note.updated_at }.reverse
   erb :'notes/index'
 end
 
@@ -11,18 +11,22 @@ end
 
 post '/notes' do
   if current_user
-    Note.create(content: params[:content])
+    Note.create(content: params[:content], user_id: params[:note][:user_id])
   else
     flash[:notice] = "You have to be logged in to do that "
     redirect '/login'
   end
-  redirect '/'
+  redirect '/notes/all'
 end
 
+#got toggle checkbox working, but deletes contents of note
 
 put '/notes/:id' do |id|
   note = Note.find(id)
-  note.update(content: params[:note][:content])
+  note.update(
+    content: params[:note][:content],
+    complete: params[:note][:complete]
+    )
   redirect "/notes/#{note.id}"
 end
 

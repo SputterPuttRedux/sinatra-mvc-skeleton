@@ -1,6 +1,9 @@
 <div id="note-show">
 <table>
-  <tr><%= @note.content %></tr>
+  <tr>
+    <p><%= @note.content %></p>
+    <p>This note's completion status is <%= @note.complete %></p>
+  </tr>
   <tr>
     <td><a href="/notes/<%= @note.id %>/edit">Edit</a></td>
     <td><a href="">Delete</a></td>

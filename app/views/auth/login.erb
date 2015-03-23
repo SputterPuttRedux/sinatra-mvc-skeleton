@@ -1,4 +1,7 @@
 <div id="login_form">
+  <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %>
+  <% end %>
   <form action="/login" method="POST">
     Email: <input type="text" name="user[email]"><br>
     Password: <input type="password" name="user[password]"><br>

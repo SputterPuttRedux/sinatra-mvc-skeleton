@@ -6,7 +6,13 @@
     )
 end
 
-5.times do |i|
+User.create(
+  email: "foo@bar.edu",
+  password: "password",
+  password_confirmation: "password"
+  )
+
+6.times do |i|
   rand(4..10).times do
     User.find(i + 1).notes.create(
       complete: [true,false].sample,
@@ -14,5 +20,6 @@ end
       )
   end
 end
+
 
 

@@ -13,6 +13,7 @@ post '/notes' do
   if current_user
     Note.create(content: params[:content])
   else
+    flash[:notice] = "You have to be logged in to do that "
     redirect '/login'
   end
   redirect '/'

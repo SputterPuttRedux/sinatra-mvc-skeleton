@@ -5,5 +5,9 @@
     <textarea type="text" name="note[content]"><%= @note.content %></textarea><br>
     <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
     <input type="submit">
+    <a href="/notes/all">
+      <input type="button" value="Cancel">
+    </a>
+    <input type="button" value="Back" id="back-button">
   </form>
 </div>

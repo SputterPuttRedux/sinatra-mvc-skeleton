@@ -3,10 +3,15 @@
     <input type="hidden" name="_method" value="PUT">
     Edit this Note:<br>
     <textarea type="text" name="note[content]"><%= @note.content %></textarea><br>
+    Completion Status:  <%= @note.complete %><br>
+    Change completion status to <%= !@note.complete %>?<br>
+
+    <input type="checkbox" name="note[complete]" value="<%= !@note.complete %>">Yes</input>
+    <input type="checkbox" name="note[complete]" value="<%= @note.complete %>">No</input><br>
     <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
     <input type="submit">
-    <a href="/notes/all">
-      <input type="button" value="Cancel">
+    <a href="/notes/all" >
+      <input type="button" value="Cancel" id="cancel-button">
     </a>
     <input type="button" value="Back" id="back-button">
   </form>

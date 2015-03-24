@@ -1,0 +1,17 @@
+<div id="note-show">
+<table>
+  <tr>
+    <p><%= @note.content %></p>
+    <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %>
+    <% end %>
+    <p>This note's completion status is <%= @note.complete %></p>
+  </tr>
+  <tr>
+    <td><a href="/notes/<%= @note.id %>/edit">Edit</a></td>
+    <td><a href="">Delete</a></td>
+    <td><a href="/notes/all">All Notes</a></td>
+  </tr>
+</table>
+
+</div>

@@ -1,1 +1,16 @@
-To-Do Keeper
+Simple Note Keeper
+
+  <div>
+    <form action="/notes" method="POST" id="new-note">
+      Make a Note!<br>
+      <textarea type="text" name="content"></textarea><br>
+      <% if current_user %>
+        <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
+      <% end %>
+      <input type="submit" value="Note It">
+    </form>
+  </div>
+
+  <% if current_user %>
+    <a href="/notes/all">See All Notes</a>
+  <% end %>

@@ -20,6 +20,8 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 require 'faker'
+require 'rack-flash'
+require 'sinatra/redirect_with_flash'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -32,6 +34,7 @@ configure do
   set :root, APP_ROOT.to_path
   # See: http://www.sinatrarb.com/faq.html#sessions
   enable :sessions
+  use Rack::Flash
   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
   # Set the views to
@@ -44,3 +47,4 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+

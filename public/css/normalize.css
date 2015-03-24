@@ -435,3 +435,9 @@ header li {
 #user-dashboard li {
   list-style-type: none;
 }
+
+/* Cancel-button styling */
+
+#cancel-button  {
+  text-decoration: none;
+}

@@ -6,22 +6,20 @@
     )
 end
 
-5.times do |i|
+User.create(
+  email: "foo@bar.edu",
+  password: "password",
+  password_confirmation: "password"
+  )
+
+6.times do |i|
   rand(4..10).times do
-    User.find(i + 1).lists.create(
+    User.find(i + 1).notes.create(
       complete: [true,false].sample,
-      title: Faker::Lorem.sentence
+      content: Faker::Lorem.paragraph
       )
   end
 end
 
-List.all.length.times do |i|
-  rand(4..8).times do
-    List.find(i + 1).items.create(
-      complete: [true,false].sample,
-      content: Faker::Lorem.word
-      )
-  end
-end
 
 

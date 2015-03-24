@@ -16,6 +16,10 @@ gem 'rake'
 
 gem 'shotgun'
 
+# To add flash message functionality
+gem 'rack-flash3'
+gem 'sinatra-redirect-with-flash'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

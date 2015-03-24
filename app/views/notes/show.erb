@@ -2,6 +2,9 @@
 <table>
   <tr>
     <p><%= @note.content %></p>
+    <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %>
+    <% end %>
     <p>This note's completion status is <%= @note.complete %></p>
   </tr>
   <tr>

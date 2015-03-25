@@ -6,8 +6,8 @@
     Completion Status:  <%= @note.complete %><br>
     Change completion status to <%= !@note.complete %>?<br>
 
-    <input type="checkbox" name="note[complete]" value="<%= !@note.complete %>">Yes</input>
-    <input type="checkbox" name="note[complete]" value="<%= @note.complete %>" checked>No</input><br>
+    <input type="radio" name="note[complete]" value="<%= !@note.complete %>">Yes</input>
+    <input type="radio" name="note[complete]" value="<%= @note.complete %>" checked>No</input><br>
     <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
     <input type="submit">
     <a href="/notes/all" >

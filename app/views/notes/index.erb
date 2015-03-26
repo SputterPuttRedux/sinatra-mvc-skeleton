@@ -7,11 +7,11 @@
       <td>Change<br>
         Status</td>
     </tr>
-    <!-- got toggle checkbox working, but deletes contents of note -->
+   <% if @notes %>
     <% @notes.each do |note| %>
     <tr>
       <td><a href="/notes/<%= note.id %>"><%= note.content %></a><br>
-        Updated At: <%= note.updated_at %><br>
+        <%= note_timestamp(note) %><br>
         <a href="/notes/<%= note.id %>/edit">[edit]</a> | <a href="/notes/<%= note.id %>/delete">[delete]</a></td>
       <td><%= note.complete %></td>
       <td>
@@ -27,6 +27,9 @@
         </form>
       </td>
     </tr>
+    <% end %>
+    <% else %>
+    <p>Your notes queue is empty.  Create a note!</p>
    <% end %>
   </table>
 </div>

@@ -2,7 +2,7 @@
 get '/notes/all' do
   @user = User.find(session[:user_id])
   @notes = @user.notes.sort_by{ |note| note.updated_at }.reverse
-  erb :'notes/index'
+  erb :'notes/index', locals: {notes: @notes}
 end
 
 get '/notes/new' do
@@ -18,8 +18,6 @@ post '/notes' do
   end
   redirect '/notes/all'
 end
-
-#got toggle checkbox working, but deletes contents of note
 
 put '/notes/:id' do |id|
   note = Note.find(id)

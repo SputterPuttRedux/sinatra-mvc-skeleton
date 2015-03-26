@@ -25,15 +25,16 @@
     <div id="login-toolbar">
       <ul>
         <li><a href="/">HOME</a></li>
-      </ul>
-      <% if current_user %>
-        <ul>
+        <% if current_user %>
+          <li>Hi, <%= temp_username %> </li>
           <li><a href="/signout">Signout</a></li>
-      <% else %>
-        <li><a href="/signup">Signup</a></li>
-        <li><a href="/login">Login</a></li>
-      <% end %>
-    </ul>
+          <li>complete: <%= num_notes_complete(current_user.notes) %> |  </li>
+          <li>incomplete: <%= num_notes_incomplete(current_user.notes)  %>  </li>
+        <% else %>
+          <li><a href="/signup">Signup</a></li>
+          <li><a href="/login">Login</a></li>
+        <% end %>
+      </ul>
   </header>
   <%= yield %>
 </div>

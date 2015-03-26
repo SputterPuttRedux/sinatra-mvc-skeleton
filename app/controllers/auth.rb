@@ -1,4 +1,8 @@
 get '/' do
+  if session[:user_id] != nil
+    @user = User.find(session[:user_id])
+    @notes = @user.notes.sort_by{ |note| note.updated_at }.reverse
+  end
   erb :welcome
 end
 

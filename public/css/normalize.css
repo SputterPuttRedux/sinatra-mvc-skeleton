@@ -425,3 +425,13 @@ td,
 th {
   padding: 0;
 }
+
+/* remove bullets from unordered lists*/
+
+ul {
+  list-style-type: none;
+}
+
+header li {
+  display: inline;
+}

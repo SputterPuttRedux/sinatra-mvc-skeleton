@@ -10,8 +10,12 @@ def temp_username
   current_user.email.gsub(/@\w+.\w+/, "")
 end
 
+def date_display(date)
+  date.strftime('%b %-d, %Y, %l:%M:%S %P')
+end
+
 def note_timestamp(note)
-  note.created_at == note.updated_at ? "Created at: #{note.created_at}" : "Updated at: #{note.updated_at}"
+  note.created_at == note.updated_at ? "Created on: #{date_display(note.created_at)}" : "Updated on: #{date_display(note.updated_at)}"
 end
 
 def num_notes_complete(notes)

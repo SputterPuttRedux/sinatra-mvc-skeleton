@@ -1,16 +1,25 @@
-Simple Note Keeper
+<% if !current_user %>
+  <div class="row">
+    <h4>Welcome to:</h4>
+    <ul>
+      <li>Learn How it Works</li>
+      <li>Create An Account</li>
+    </ul>
+  </div>
+<% end %>
 
-  <div>
+  <div class ="row">
     <form action="/notes" method="POST" id="new-note">
-      Make a Note!<br>
-      <textarea type="text" name="content"></textarea><br>
+      <br>
+      <h2>SIMPLE NOTE KEEPER</h2>
+      <textarea type="text" name="content"></textarea>
       <% if current_user %>
         <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
       <% end %>
       <input type="submit" value="Note It">
     </form>
   </div>
-
+  <br>
   <% if current_user %>
     <%= erb :'notes/index' %>
   <% end %>

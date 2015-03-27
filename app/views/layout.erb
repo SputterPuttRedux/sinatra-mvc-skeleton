@@ -11,31 +11,57 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/foundation.css">
+
+
   <!-- Load Vollkorn font -->
   <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Simple | NK</title>
 </head>
 <body>
-<div id="content">
-  <header>
-    <div id="login-toolbar">
-      <ul>
-        <li><a href="/">HOME</a></li>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Note Home</a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+     <!--  <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li> -->
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
         <% if current_user %>
-          <li>Hi, <%= temp_username %> </li>
+          <li><a href="#">complete: <%= num_notes_complete(current_user.notes) %></a> </li>
+          <li><a href="">|</a></li>
+          <li><a href="#">incomplete: <%= num_notes_incomplete(current_user.notes) %></a></li>
+          <li class="has-dropdown">
+            <a href="#">Sort Notes</a>
+            <ul class="dropdown">
+              <li><a href="#">Sort by Completion</a></li>
+              <li class="active"><a href="#">Sort by Date</a></li>
+            </ul>
+          </li>
           <li><a href="/signout">Signout</a></li>
-          <li>complete: <%= num_notes_complete(current_user.notes) %> |  </li>
-          <li>incomplete: <%= num_notes_incomplete(current_user.notes)  %>  </li>
-        <% else %>
-          <li><a href="/signup">Signup</a></li>
-          <li><a href="/login">Login</a></li>
-        <% end %>
+          <% else %>
+            <li><a href="/signup">Signup</a></li>
+            <li><a href="/login">Login</a></li>
+          <% end %>
+          <li></li>
       </ul>
-  </header>
+
+      <% if current_user %>
+        <ul class="left">
+          <li><a href="">Hi, <%= temp_username %>!</a></li>
+        </ul>
+      <% end %>
+    </section>
+  </nav>
+<div id="content">
   <%= yield %>
 </div>
 

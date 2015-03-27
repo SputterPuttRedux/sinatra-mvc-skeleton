@@ -16,7 +16,7 @@ post '/notes' do
     flash[:notice] = "You have to be logged in to do that "
     redirect '/login'
   end
-  redirect '/notes/all'
+  redirect '/'
 end
 
 put '/notes/:id' do |id|

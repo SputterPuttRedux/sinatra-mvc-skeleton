@@ -428,10 +428,10 @@ th {
 
 /* remove bullets from unordered lists*/
 
-ul {
+/*ul {
   list-style-type: none;
 }
 
 header li {
   display: inline;
-}
+}*/

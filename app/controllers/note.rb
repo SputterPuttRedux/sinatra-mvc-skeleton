@@ -25,14 +25,14 @@ put '/notes/:id' do |id|
     content: params[:note][:content],
     complete: params[:note][:complete]
     )
-  redirect "/notes/#{note.id}"
+  redirect '/'
 end
 
 put '/notes/:id/complete' do |id|
   note = Note.find(id)
   note.update(complete: params[:note][:complete])
   flash[:notice] = "The status of this note has changed to #{note.complete}"
-  redirect "/notes/#{note.id}"
+  redirect '/'
 end
 
 get '/notes/:id' do |id|
@@ -53,5 +53,5 @@ end
 
 delete '/notes/:id' do |id|
   @note = Note.find(id).destroy
-  redirect '/notes/all'
+  redirect '/'
 end

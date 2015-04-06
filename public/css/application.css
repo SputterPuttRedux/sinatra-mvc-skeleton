@@ -65,3 +65,19 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+
+#notes-table{
+    width: 100%;
+}
+
+.current-status {
+    text-align: center;
+}
+
+.fa-check{
+    color: green;
+}
+
+.fa-times{
+    color: red;
+}

@@ -165,8 +165,8 @@ select {
   width: 100%;
   float: left; }
 
-[class*="column"] + [class*="column"]:last-child {
-  float: right; }
+/*[class*="column"] + [class*="column"]:last-child {
+  float: right; }*/
 
 [class*="column"] + [class*="column"].end {
   float: left; }

@@ -25,3 +25,11 @@ end
 def num_notes_incomplete(notes)
   notes.select{ |note| note.complete == false }.count
 end
+
+# def change_completion_status(note)
+#   if note.complete
+#     note.update(complete: false)
+#   else
+#     note.update(complete: true)
+#   end
+# end

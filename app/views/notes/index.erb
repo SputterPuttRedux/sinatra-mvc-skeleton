@@ -1,34 +1,34 @@
 
 <div id="all notes">
-  <table>
+  <table id="notes-table">
     <tr>
       <td>Note</td>
       <td>Completed</td>
-      <td>Change<br>
-        Status</td>
+      <!-- <td>Change<br>
+        Status</td> -->
     </tr>
    <% if @notes %>
     <% @notes.each do |note| %>
-    <tr>
-      <td><a href="/notes/<%= note.id %>"><%= note.content %></a><br>
-        <%= note_timestamp(note) %><br>
-        <a href="/notes/<%= note.id %>/edit">[edit]</a> | <a href="/notes/<%= note.id %>/delete">[delete]</a></td>
-      <td><%= note.complete %></td>
-      <td>
-        <form action="/notes/<%= note.id %>/complete" method="POST" >
-          <input type="hidden" name="_method" value="PUT">
-          <!-- <input type="checkbox" name="checked" checked="true">Checked</input> -->
-          <% if note.complete %>
-            <input type="checkbox" name="note[complete]" value=false>false</input><br>
-          <% else %>
-            <input type="checkbox" name="note[complete]" value=true>true</input><br>
-          <% end %>
-          <input type="submit" name="submit" value="Update"/>
-        </form>
-      </td>
-    </tr>
+      <tr class="note-row">
+        <td><a href="/notes/<%= note.id %>"><%= note.content %></a><br>
+          <%= note_timestamp(note) %><br>
+          <a href="/notes/<%= note.id %>/edit" title="Edit This Note">[edit]</a> | <a href="" title="Change Completion Status">[update]</a> | <a href="/notes/<%= note.id %>/delete" title="Delete This Note">[delete]</a></td>
+        <td class="current-status"><%= note.complete %></td>
+         <!-- <td>
+            <form action="/notes/<%= note.id %>/complete" method="POST" >
+              <input type="hidden" name="_method" value="PUT">
+
+              <% if note.complete %>
+                <input type="checkbox" name="note[complete]" value=false>false</input><br>
+              <% else %>
+                <input type="checkbox" name="note[complete]" value=true>true</input><br>
+              <% end %>
+              <input type="submit" name="submit" value="Update"/>
+            </form>
+          </td> -->
+      </tr>
     <% end %>
-    <% else %>
+   <% else %>
     <p>Your notes queue is empty.  Create a note!</p>
    <% end %>
   </table>

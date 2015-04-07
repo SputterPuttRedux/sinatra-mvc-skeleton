@@ -13,7 +13,7 @@
         <td><a href="/notes/<%= note.id %>"><%= note.content %></a><br>
           <%= note_timestamp(note) %><br>
           <a href="/notes/<%= note.id %>/edit" title="Edit This Note">[edit]</a> | <a href="" title="Change Completion Status">[update]</a> | <a href="/notes/<%= note.id %>/delete" title="Delete This Note">[delete]</a></td>
-        <td class="current-status"><%= note.complete %></td>
+        <td><a class="current-status" href="/notes/<%= note.id %>/complete"><%= note.complete %></a></td>
          <!-- <td>
             <form action="/notes/<%= note.id %>/complete" method="POST" >
               <input type="hidden" name="_method" value="PUT">

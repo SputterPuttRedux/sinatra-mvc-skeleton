@@ -3,9 +3,9 @@ function completionIconDisplay (){
  for(i=0; i < $statusArray.length; i++){
   var $currentCell = $($statusArray[i]);
   if ($currentCell.html()==="false"){
-    $currentCell.html('<a href="" title="Change Completion Status"><i class="fa fa-times"></i></a>');
+    $currentCell.html('<i class="fa fa-times"></i>');
   } else if($currentCell.html()==="true"){
-    $currentCell.html('<a href="" title="Change Completion Status"><i class="fa fa-check"></i></a>');
+    $currentCell.html('<i class="fa fa-check"></i>');
   }
  }
 }

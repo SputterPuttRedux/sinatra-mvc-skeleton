@@ -33,15 +33,22 @@ $(document).ready(function() {
   });
 
   completionIconDisplay();
-  // completionRowColor();
+
   var $completionIcon = $('.current-status').children().children('i');
 
   $completionIcon.on('click', function(event){
     event.preventDefault();
     var $target = $(event.target);
-    $.ajax( $target.attr('class', 'fa fa-times'));
+    var $url = $(event.currentTarget.offsetParent.innerHTML);
+
+    $.ajax({
+      type: "GET",
+      url: $url.attr('href'),
+      dataType: 'html'
+    }).done(function(response){
+      $resp = $(response).children().children('#notes-table');
+      $target.closest('#all-notes').html($resp);
+      completionIconDisplay();
+    });
   });
-
-// stopped here. trying to write an ajax call that will execute the helper method I wrote that changes the completion status of the individual note.
-
 });

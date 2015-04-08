@@ -26,10 +26,14 @@ def num_notes_incomplete(notes)
   notes.select{ |note| note.complete == false }.count
 end
 
-# def change_completion_status(note)
-#   if note.complete
-#     note.update(complete: false)
-#   else
-#     note.update(complete: true)
-#   end
-# end
+def make_first_note
+  Note.create(user_id: session[:user_id], content: "Welcome to Note Keeper! Create your first note!")
+end
+
+def first_note
+  Note.find_by(content: "Welcome to Note Keeper! Create your first note!")
+end
+
+def complete_first_note
+  first_note.update(content: "Congrats on making your first note!", complete: true)
+end

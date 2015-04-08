@@ -9,8 +9,24 @@ get '/notes/new' do
   erb :'notes/new'
 end
 
+get '/notes/sort/false' do
+  @user = User.find(session[:user_id])
+  @notes = @user.notes.select{ |note| note.complete == false}
+  erb :'notes/index'
+end
+
+get '/notes/sort/true' do
+  @user = User.find(session[:user_id])
+  @notes = @user.notes.select{ |note| note.complete == true}
+  erb :'notes/index'
+end
+
+get '/nav' do
+  erb :layout
+end
+
 post '/notes' do
-  if current_user
+  if session[:user_id]
     Note.create(content: params[:content], user_id: params[:note][:user_id])
   else
     flash[:notice] = "You have to be logged in to do that "

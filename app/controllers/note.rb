@@ -44,13 +44,13 @@ put '/notes/:id' do |id|
   redirect '/'
 end
 
-put '/notes/:id/complete' do |id|
-  note = Note.find(id)
-  # note.update(complete: params[:note][:complete])
-  # flash[:notice] = "The status of this note has changed to #{note.complete}"
-  note.change_completion_status
-  redirect '/'
-end
+# put '/notes/:id/complete' do |id|
+#   note = Note.find(id)
+#   # note.update(complete: params[:note][:complete])
+#   # flash[:notice] = "The status of this note has changed to #{note.complete}"
+#   note.change_completion_status
+#   redirect '/'
+# end
 
 get '/notes/:id/complete' do |id|
   note = Note.find(id)

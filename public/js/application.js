@@ -10,6 +10,8 @@ function completionIconDisplay (){
  }
 }
 
+// Function that will change the color of the table row depending on completion status
+
 // function completionRowColor(){
 //   $noteRow = $('.note-row');
 //   for(i=0; i < $noteRow.length; i++){

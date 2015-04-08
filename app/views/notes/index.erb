@@ -7,29 +7,19 @@
       <!-- <td>Change<br>
         Status</td> -->
     </tr>
-   <% if @notes %>
+   <% if @notes.empty? %>
+     <% make_first_note %>
+   <% elsif @notes.length > 1 && first_note %>
+     <% complete_first_note %>
+   <% else %>
     <% @notes.each do |note| %>
       <tr class="note-row">
         <td><a href="/notes/<%= note.id %>"><%= note.content %></a><br>
           <%= note_timestamp(note) %><br>
           <a href="/notes/<%= note.id %>/edit" title="Edit This Note">[edit]</a> | <a href="" title="Change Completion Status">[update]</a> | <a href="/notes/<%= note.id %>/delete" title="Delete This Note">[delete]</a></td>
-        <td><a class="current-status" href="/notes/<%= note.id %>/complete"><%= note.complete %></a></td>
-         <!-- <td>
-            <form action="/notes/<%= note.id %>/complete" method="POST" >
-              <input type="hidden" name="_method" value="PUT">
-
-              <% if note.complete %>
-                <input type="checkbox" name="note[complete]" value=false>false</input><br>
-              <% else %>
-                <input type="checkbox" name="note[complete]" value=true>true</input><br>
-              <% end %>
-              <input type="submit" name="submit" value="Update"/>
-            </form>
-          </td> -->
+        <td class="current-status"><a class="current-status" href="/notes/<%= note.id %>/complete"><%= note.complete %></a></td>
       </tr>
     <% end %>
-   <% else %>
-    <p>Your notes queue is empty.  Create a note!</p>
    <% end %>
   </table>
 </div>

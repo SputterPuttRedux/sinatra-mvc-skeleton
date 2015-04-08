@@ -25,6 +25,7 @@ function completionIconDisplay (){
 
 
 $(document).ready(function() {
+  $(document).foundation();
 
   $('#back-button').click(function() {
     parent.history.back();

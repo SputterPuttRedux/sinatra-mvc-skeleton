@@ -12,17 +12,22 @@ end
 get '/notes/sort/false' do
   @user = User.find(session[:user_id])
   @notes = @user.notes.select{ |note| note.complete == false}
-  erb :'notes/index'
+
+  if request.xhr?
+    erb :'notes/index'
+  else
+    redirect '/'
+  end
 end
 
 get '/notes/sort/true' do
   @user = User.find(session[:user_id])
   @notes = @user.notes.select{ |note| note.complete == true}
-  erb :'notes/index'
-end
-
-get '/nav' do
-  erb :layout
+  if request.xhr?
+    erb :'notes/index'
+  else
+    redirect '/'
+  end
 end
 
 post '/notes' do

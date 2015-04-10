@@ -34,21 +34,79 @@ $(document).ready(function() {
 
   completionIconDisplay();
 
-  var $completionIcon = $('.current-status').children().children('i');
+//   var $completionIcon = $('.current-status').children().children('i');
 
-  $completionIcon.on('click', function(event){
+//   $completionIcon.on('click', function(event){
+//     event.preventDefault();
+//     var $target = $(event.target);
+//     var $url = $(event.currentTarget.offsetParent.innerHTML);
+
+//     $.ajax({
+//       type: "GET",
+//       url: $url.attr('href'),
+//       dataType: 'html'
+//     }).done(function(response){
+//       $resp = $(response).children().children('#notes-table');
+//       $target.closest('#all-notes').html($resp);
+//       completionIconDisplay();
+//     });
+//   });
+// });
+
+// ajax call in loop
+
+  var $completionIcon = $('.current-status').children();
+
+  for (var i = 0; i < $completionIcon.length; i++)
+  {
+    (function(i) {
+      $($completionIcon[i]).on('click', function(event){
+        var $target = $(event.target);
+        var $url = $(event.currentTarget.offsetParent.innerHTML);
+        $.ajax({
+            type: "GET",
+            url: $url.attr('href'),
+            dataType: "html"
+        }).done(function(response){
+          $resp = $(response).children().children('#notes-table');
+          $target.closest('#all-notes').html($resp);
+          completionIconDisplay();
+        });
+      });
+    })(i);
+  }
+
+  var $trueSort = $('#true-sort');
+  var $falseSort = $('#false-sort');
+
+  $trueSort.on('click', function(event){
     event.preventDefault();
     var $target = $(event.target);
-    var $url = $(event.currentTarget.offsetParent.innerHTML);
-
     $.ajax({
       type: "GET",
-      url: $url.attr('href'),
-      dataType: 'html'
+      url: $target.attr('href')
     }).done(function(response){
       $resp = $(response).children().children('#notes-table');
-      $target.closest('#all-notes').html($resp);
+      // debugger
+      $target.closest('body').children('#content').children('#all-notes').html($resp);
       completionIconDisplay();
     });
   });
+
+  $falseSort.on('click', function(event){
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      type: "GET",
+      url: $target.attr('href')
+    }).done(function(response){
+      $resp = $(response).children().children('#notes-table');
+      // debugger
+      $target.closest('body').children('#content').children('#all-notes').html($resp);
+      completionIconDisplay();
+    });
+  });
+
+
+
 });

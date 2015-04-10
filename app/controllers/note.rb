@@ -58,9 +58,18 @@ end
 # end
 
 get '/notes/:id/complete' do |id|
+  @user = User.find(session[:user_id])
+  @notes = @user.notes.sort_by{ |note| note.updated_at }.reverse
+
   note = Note.find(id)
   note.change_completion_status
+
+  if request.xhr?
+    erb :'/notes/index'
+  else
   redirect '/'
+  end
+
 end
 
 get '/notes/:id' do |id|

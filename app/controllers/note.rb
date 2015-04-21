@@ -9,6 +9,18 @@ get '/notes/new' do
   erb :'notes/new'
 end
 
+get '/notes/sort/date' do
+  @user = User.find(session[:user_id])
+  @notes = @user.notes.select{ |note| note.updated_at }.reverse
+
+  if request.xhr?
+    erb :'notes/index'
+  else
+    redirect '/'
+  end
+
+end
+
 get '/notes/sort/false' do
   @user = User.find(session[:user_id])
   @notes = @user.notes.select{ |note| note.complete == false}

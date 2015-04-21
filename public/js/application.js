@@ -53,7 +53,7 @@ $(document).ready(function() {
 //   });
 // });
 
-// ajax call in loop
+// ajax call in loop doesn't quite work
 
   var $completionIcon = $('.current-status').children();
 
@@ -78,6 +78,7 @@ $(document).ready(function() {
 
   var $trueSort = $('#true-sort');
   var $falseSort = $('#false-sort');
+  var $dateSort = $('#date-sort');
 
   $trueSort.on('click', function(event){
     event.preventDefault();
@@ -94,6 +95,20 @@ $(document).ready(function() {
   });
 
   $falseSort.on('click', function(event){
+    event.preventDefault();
+    var $target = $(event.target);
+    $.ajax({
+      type: "GET",
+      url: $target.attr('href')
+    }).done(function(response){
+      $resp = $(response).children().children('#notes-table');
+      // debugger
+      $target.closest('body').children('#content').children('#note-index').html($resp);
+      completionIconDisplay();
+    });
+  });
+
+  $dateSort.on('click', function(event){
     event.preventDefault();
     var $target = $(event.target);
     $.ajax({

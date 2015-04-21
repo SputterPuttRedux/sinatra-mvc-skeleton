@@ -409,10 +409,9 @@ optgroup {
   font-weight: bold;
 }
 
-/* Tables
-   ========================================================================== */
+/* ==========================Tables=============================== */
 
-/**
+/*
  * Remove most spacing between table cells.
  */
 
@@ -425,13 +424,3 @@ td,
 th {
   padding: 0;
 }
-
-/* remove bullets from unordered lists*/
-
-/*ul {
-  list-style-type: none;
-}
-
-header li {
-  display: inline;
-}*/

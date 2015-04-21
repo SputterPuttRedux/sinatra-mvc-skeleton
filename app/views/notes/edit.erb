@@ -1,5 +1,5 @@
-<div>
-  <form action="/notes/<%= @note.id %>" method="POST" id="edit-note">
+<div id="edit-note">
+  <form action="/notes/<%= @note.id %>" method="POST" >
     <input type="hidden" name="_method" value="PUT">
     Edit this Note:<br>
     <textarea type="text" name="note[content]"><%= @note.content %></textarea><br>

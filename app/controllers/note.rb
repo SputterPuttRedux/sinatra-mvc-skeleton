@@ -23,7 +23,7 @@ end
 
 get '/notes/sort/false' do
   @user = User.find(session[:user_id])
-  @notes = @user.notes.select{ |note| note.complete == false}
+  @notes = @user.notes.select{ |note| note.complete == false }
 
   if request.xhr?
     erb :'notes/index'
@@ -34,7 +34,8 @@ end
 
 get '/notes/sort/true' do
   @user = User.find(session[:user_id])
-  @notes = @user.notes.select{ |note| note.complete == true}
+  @notes = @user.notes.select{ |note| note.complete == true }
+
   if request.xhr?
     erb :'notes/index'
   else
@@ -79,7 +80,7 @@ get '/notes/:id/complete' do |id|
   if request.xhr?
     erb :'/notes/index'
   else
-  redirect '/'
+    redirect '/'
   end
 
 end

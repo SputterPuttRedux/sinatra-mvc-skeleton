@@ -47,7 +47,7 @@ $(document).ready(function() {
 //       dataType: 'html'
 //     }).done(function(response){
 //       $resp = $(response).children().children('#notes-table');
-//       $target.closest('#all-notes').html($resp);
+//       $target.closest('#note-index').html($resp);
 //       completionIconDisplay();
 //     });
 //   });
@@ -69,7 +69,7 @@ $(document).ready(function() {
             dataType: "html"
         }).done(function(response){
           $resp = $(response).children().children('#notes-table');
-          $target.closest('#all-notes').html($resp);
+          $target.closest('#note-index').html($resp);
           completionIconDisplay();
         });
       });
@@ -88,7 +88,7 @@ $(document).ready(function() {
     }).done(function(response){
       $resp = $(response).children().children('#notes-table');
       // debugger
-      $target.closest('body').children('#content').children('#all-notes').html($resp);
+      $target.closest('body').children('#content').children('#note-index').html($resp);
       completionIconDisplay();
     });
   });
@@ -102,7 +102,7 @@ $(document).ready(function() {
     }).done(function(response){
       $resp = $(response).children().children('#notes-table');
       // debugger
-      $target.closest('body').children('#content').children('#all-notes').html($resp);
+      $target.closest('body').children('#content').children('#note-index').html($resp);
       completionIconDisplay();
     });
   });
